@@ -1,0 +1,9 @@
+import { ConsultarNotaController } from "../../Controller/ConsultarNotaController";
+import { UseCaseBasico } from "../../domain/usecases/usecase-basico";
+import { IController } from "../../Controllers/IController";
+
+export function factoryControllerBasico(): IController {
+    const uc = new UseCaseBasico();
+    const controller = new ConsultarNotaController(uc);
+    return controller;
+}
