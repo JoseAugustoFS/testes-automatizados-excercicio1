@@ -2,7 +2,7 @@ import { ConsultaNotaController, IController } from "../../Controller/ConsultarN
 import { ConsultarNotaUseCase } from "../../domain/usecases/ConsultarNotaUseCase";
 
 
-export function factoryControllerBasico(): IController {
+export function factoryController(): IController {
     const uc = new ConsultarNotaUseCase();
     const controller = new ConsultaNotaController(uc);
     return controller;
