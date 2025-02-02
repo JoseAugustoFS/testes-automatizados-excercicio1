@@ -6,7 +6,7 @@ export interface IController {
     handle(req: Request, resp: Response): Promise<void>;
 }
 
-export class ConsultaNotaController implements IController {
+export class ConsultarNotaController implements IController {
     private uc: IUseCase<IEntradaConsultarNotaUseCase, ISaidaConsultarNotaUseCase>;
 
     constructor(uc: IUseCase<IEntradaConsultarNotaUseCase, ISaidaConsultarNotaUseCase>) {
@@ -31,7 +31,10 @@ export class ConsultaNotaController implements IController {
 
         try {
             const resultado = await this.uc.perform(dto_usecase);
-            resp.json({ nota: resultado }).end();
+            resp.status(200).json({ 
+                mensagem: 'ConsultarNotaController.metodoBasico() chamado',
+                nota: resultado 
+            }).end();
         } catch (error) {
             resp.status(500).json({ erro: 'Erro ao consultar nota.' });
         }
